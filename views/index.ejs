@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>AlertMap</title>
     <link href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css' rel="stylesheet" type="text/css"/>
 
     <link rel='stylesheet' href='/stylesheets/style.css' />
@@ -26,15 +26,24 @@
       <aside class="col-md-3">
 
         <section>
-          <h1>Alert</h1>
-          <section><h2>Current location</h2><p>Brussels</p></section>
+
+
+          <section id="infoPanel">
+            <h1>Alert</h1>
+            <!--<h2>Marker status:</h2>
+            <div id="markerStatus"><i>Click and drag the marker.</i></div>-->
+            <h2>Marker position:</h2>
+            <p id="info"></p>
+            <h2>Closest address:</h2>
+            <p id="address"></p>
+          </section>
+
           <ul>
             <li><button type="button" class="btn btn-danger">Robbery</button></li>
             <li><button type="button" class="btn btn-danger">Burglary</button></li>
             <li><button type="button" class="btn btn-danger">Murder</button></li>
-            <li><button type="button" class="btn btn-danger">Property teft</button></li>
+            <li><button type="button" class="btn btn-danger">Pick pocket</button></li>
             <li><button type="button" class="btn btn-danger">Harassment</button></li>
-            <li><button type="button" class="btn btn-danger">Murder</button></li>
           </ul>
 
           <ul>
