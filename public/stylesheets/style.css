@@ -45,4 +45,9 @@ aside {
   #infoPanel #address {
     margin-bottom: 15px; }
 
+.controls {
+  width: 25%;
+  margin-top: 6px;
+  /*height: 25px;*/ }
+
 /*# sourceMappingURL=style.css.map */
