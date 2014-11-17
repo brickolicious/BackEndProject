@@ -1,4 +1,5 @@
 var geocoder = new google.maps.Geocoder();
+var currentLatLng;
 
 function geocodePosition(pos) {
     geocoder.geocode({
@@ -17,6 +18,7 @@ function updateMarkerStatus(str) {
 }
 
 function updateMarkerPosition(latLng) {
+    currentLatLng = latLng;
     document.getElementById('info').innerHTML = [
         latLng.lat(),
         latLng.lng()
@@ -28,7 +30,7 @@ function updateMarkerAddress(str) {
 }
 
 function initialize() {
-    console.log("In initialize maps function");
+    //console.log("In initialize maps function");
 
     var map;
     var mymarker;
@@ -51,7 +53,7 @@ function initialize() {
 
         mapOptions.center.lat = crd.latitude;
         mapOptions.center.lng = crd.longitude;
-        console.log("geolocation succes: lat->"+mapOptions.center.lat+" long->"+mapOptions.center.lng);
+        //console.log("geolocation succes: lat->"+mapOptions.center.lat+" long->"+mapOptions.center.lng);
         map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
 
         //set marker and update info where marker is set
@@ -179,7 +181,7 @@ function initialize() {
 
 
 
-            console.log("latlong:"+marker.position.lat+", "+marker.position.lng);
+            //console.log("latlong:"+marker.position.lat+", "+marker.position.lng);
             var latlngPos = new google.maps.LatLng(marker.position.lat(),marker.position.lng());
             updateMarkerPosition(latlngPos);
             geocodePosition(latlngPos);
