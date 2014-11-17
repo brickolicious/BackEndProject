@@ -31,7 +31,9 @@ for(var i=0;i<buttons.length-1;i++){
             contentType: "application/json; charset=UTF-8",*/
             data:  JSON.stringify(alertObj)
         }).done(function ( data ) {
-            console.log("ajax callback response:" + data);
+            //console.log("ajax callback response:" + data);
+            alert(data);
+
         });
 
 
