@@ -11,14 +11,15 @@ aside {
   background-color: snow;
   height: 100%; }
   aside h1 {
-    text-align: center; }
+    text-align: center;
+    font-size: 16px; }
   aside h2 {
-    font-size: 18px;
+    font-size: 14px;
     text-align: center;
     font-weight: bold; }
   aside p {
     text-align: center;
-    font-size: 15px; }
+    font-size: 12px; }
   aside ul {
     list-style: none;
     margin: 0px;
@@ -27,7 +28,7 @@ aside {
     aside ul li {
       margin-bottom: 10px; }
       aside ul li button {
-        height: 40px;
+        height: 30px;
         width: 100%; }
 
 .row {
@@ -38,7 +39,7 @@ aside {
 
 #map-canvas {
   /*height: calc(100% - 1px);*/
-  height: 100%; }
+  height: calc(100% - 35px); }
 
 #infoPanel {
   text-align: center; }
@@ -49,5 +50,15 @@ aside {
   width: 25%;
   margin-top: 6px;
   /*height: 25px;*/ }
+
+.navbar {
+  margin-bottom: 0px;
+  background-color: #303030;
+  min-height: 35px; }
+
+#login {
+  float: right;
+  margin-right: 30px;
+  margin-top: 3px; }
 
 /*# sourceMappingURL=style.css.map */

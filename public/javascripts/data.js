@@ -4,7 +4,7 @@ initData();
 function initData() {
 
     coupleListenersToAlertButtons();
-    getAllPointsForInitialPosition();
+    getAllPointsForLocation();
 
 };
 
