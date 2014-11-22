@@ -12,6 +12,8 @@ router.get('/', function(req, res) {
 router.get('/setPoint',function(req, res){
 
   //json sucks clean and slice helps to make it parsable.
+  //men clean functie toevoegen aan men module en daar doen controller is niet de correcte plaats
+  //niet vergeten
   var alertPointObj =JSON.parse(clean(JSON.stringify(req.query)).slice(2,-5));
 
   //within this module there needs to be checked if the user is logged in and is valid the userID needs to be stored aswell

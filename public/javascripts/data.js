@@ -25,8 +25,8 @@ function coupleListenersToAlertButtons(){
 
             //set point - send point data to server
             $.ajax({
-                type: "get",
-                url: "http://localhost:8080/data/setPoint",
+                type: "POST",
+                url: "http://localhost:8080/setPoint",
                 /*crossDomain:true,
                  dataType: "json",
                  contentType: "application/json; charset=UTF-8",*/

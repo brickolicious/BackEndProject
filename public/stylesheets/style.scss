@@ -82,6 +82,19 @@ aside{
   margin-bottom: 0px;
   background-color: #303030;
   min-height: 35px;
+
+
+  p{
+    display: inline;
+    padding-top: 10px;
+    font-size: 16px;
+    color:white;
+  }
+}
+
+
+.toHideOrNotToHide{
+  display: none;
 }
 
 
@@ -91,6 +104,29 @@ aside{
   margin-right: 30px;
   margin-top: 3px;
 
+  p{
+    margin-top: 5px;
+    color:white;
+  }
+color:white;
+  button{
+    color:darkgray;
+  }
+}
+
+#register{
+  float:right;
+  margin-right: 30px;
+  margin-top: 3px;
+
+  p{
+    margin-top: 5px;
+    color:white;
+  }
+color:white;
+  button{
+    color:darkgray;
+  }
 }
 
 #fbLogin{

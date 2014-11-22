@@ -1,7 +1,9 @@
 var dataAccesor = function(){
 
     addPoint = function(json){
-        console.log("Add point: "+json.alertType);
+        //console.log(json);
+        var pointToAdd = JSON.parse(clean(JSON.stringify(json)).slice(2,-5));
+        console.log("Add point: "+pointToAdd.alertType);
 
     },
 
@@ -20,3 +22,13 @@ var dataAccesor = function(){
 
 
 module.exports = dataAccesor;
+
+
+
+function clean(json) {
+
+    json = json.replace(/\\/g, '');
+
+    return json;
+
+}
