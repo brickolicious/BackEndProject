@@ -60,6 +60,14 @@ aside {
     padding-top: 10px;
     font-size: 16px;
     color: white; }
+  .navbar .homeNav {
+    color: white;
+    font-size: 18px;
+    padding-top: 10px;
+    padding-left: 15px; }
+    .navbar .homeNav span {
+      margin-right: 5px;
+      margin-top: 5px; }
 
 .toHideOrNotToHide {
   display: none; }

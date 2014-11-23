@@ -5,6 +5,8 @@ var dataAccesor = function(){
         var pointToAdd = JSON.parse(clean(JSON.stringify(json)).slice(2,-5));
         console.log("Add point: "+pointToAdd.alertType);
 
+
+
     },
 
     getAllPointsAroundLocation = function(coordinates){
@@ -38,8 +40,6 @@ var dataAccesor = function(){
 
 
 module.exports = dataAccesor;
-
-
 
 function clean(json) {
 

@@ -26,5 +26,22 @@
         document.getElementById('forgot').classList.toggle('toHideOrNotToHide');
     });
 
+    var showLogin = document.getElementById('showLogin');
+
+    showLogin.addEventListener('click',function(e){
+        e.preventDefault();
+        document.getElementById('forgot').classList.toggle('toHideOrNotToHide');
+        document.getElementById('login').classList.toggle('toHideOrNotToHide');
+    });
+
+
+    var showRegLogin = document.getElementById('showRegLogin');
+
+    showRegLogin.addEventListener('click',function(e){
+        e.preventDefault();
+        document.getElementById('register').classList.toggle('toHideOrNotToHide');
+        document.getElementById('login').classList.toggle('toHideOrNotToHide');
+    });
+
 
 })();

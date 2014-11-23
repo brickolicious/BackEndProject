@@ -20,7 +20,8 @@
     <article class="row">
 
       <nav class="navbar navbar-default" role="navigation">
-        <p>Alert map</p>
+        <a href="/" class="homeNav" title="home"><span class="glyphicon glyphicon-home"></span>ALERT MAP</a>
+
         <section id="register" class="toHideOrNotToHide">
 
           <form action="/register" method="POST">
@@ -28,6 +29,7 @@
           <label for="password"><span class="glyphicon glyphicon-lock"></span></label><input type="text" required="required" name="password" id="password" placeholder="password" pattern="{5,15}" title="5-15 characters"/>
           <label for="email"><span class="glyphicon glyphicon-envelope"></span></label><input type="email" name="email" id="email"/>
           <input type="submit" id="regBtn" value="register"/>
+          <button  id="showRegLogin">Login</button>
           </form>
         </section>
 
@@ -36,6 +38,7 @@
           <form action="/forgot" method="POST">
             <label for="email"><span class="glyphicon glyphicon-envelope"></span></label><input type="email" name="email" require="require" placeholder="email" id="email"/>
             <input type="submit" id="forgotBtn" value="request password"/>
+            <button  id="showLogin">Login</button>
           </form>
         </section>
 

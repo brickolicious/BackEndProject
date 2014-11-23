@@ -50,6 +50,8 @@ router.get('/', function(req, res) {
 
 router.post('/login',passport.authenticate('local'),function(req,res){
 
+
+
 res.redirect('/');
 
 });
@@ -75,6 +77,8 @@ router.post('/setPoint'/*,passport.authenticate('local')*/,function(req, res){
 
   if(req.isAuthenticated){
 
+    //user email of userID nog meegeven om te melding te koppelen aan account
+    //datum ook mee opslaan
     dataAccess.addPoint(req.body,function(){
       res.end('Point has been reported.');
     });
