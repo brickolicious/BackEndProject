@@ -64,27 +64,17 @@ aside {
 .toHideOrNotToHide {
   display: none; }
 
-#login {
+#login, #register, #forgot {
   float: right;
   margin-right: 30px;
   margin-top: 3px;
   color: white; }
-  #login p {
-    margin-top: 5px;
-    color: white; }
-  #login button {
-    color: darkgray; }
-
-#register {
-  float: right;
-  margin-right: 30px;
-  margin-top: 3px;
-  color: white; }
-  #register p {
-    margin-top: 5px;
-    color: white; }
-  #register button {
-    color: darkgray; }
+  #login p, #register p, #forgot p {
+    margin-top: 5px; }
+  #login button, #login input[type=submit], #login input[type=text], #login input[type=email], #register button, #register input[type=submit], #register input[type=text], #register input[type=email], #forgot button, #forgot input[type=submit], #forgot input[type=text], #forgot input[type=email] {
+    color: black; }
+  #login span, #register span, #forgot span {
+    margin-right: 3px; }
 
 #fbLogin {
   padding: 5px;

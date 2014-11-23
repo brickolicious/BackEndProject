@@ -48,14 +48,30 @@ router.get('/', function(req, res) {
   });
 });
 
-router.post('/',passport.authenticate('local'),function(req,res){
+router.post('/login',passport.authenticate('local'),function(req,res){
 
 res.redirect('/');
 
 });
 
+router.post('/register',passport.authenticate('local'),function(req,res){
 
-router.post('/setPoint',function(req, res){
+  dataAccess.registerUser(req.body);
+
+  res.redirect('/');
+
+});
+
+router.post('/forgot',function(req,res){
+
+  dataAccess.forgottenUser(req.body);
+
+  res.redirect('/');
+
+});
+
+
+router.post('/setPoint'/*,passport.authenticate('local')*/,function(req, res){
 
   if(req.isAuthenticated){
 

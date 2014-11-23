@@ -10,13 +10,29 @@ var dataAccesor = function(){
     getAllPointsAroundLocation = function(coordinates){
         console.log("Get points around: "+coordinates);
 
+    },
+
+    registerNewUser = function(formBody){
+
+        //console.log(formBody.username+"  "+formBody.password+"  "+formBody.email);
+
+    },
+
+    sendForgottenPasswordToUser = function(formBody){
+        console.log("Send password to: "+formBody.email);
+
+
     }
 
 
     return{
         "addPoint":addPoint,
-        "getPointsAround":getAllPointsAroundLocation
+        "getPointsAround":getAllPointsAroundLocation,
+        "registerUser":registerNewUser,
+        "forgottenUser":sendForgottenPasswordToUser
     };
+
+
 
 }();
 

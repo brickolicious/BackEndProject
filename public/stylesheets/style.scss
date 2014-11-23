@@ -99,35 +99,29 @@ aside{
 
 
 
-#login{
+#login, #register, #forgot{
   float:right;
   margin-right: 30px;
   margin-top: 3px;
 
   p{
     margin-top: 5px;
-    color:white;
+
   }
 color:white;
-  button{
-    color:darkgray;
+  button, input[type=submit],input[type=text],input[type=email]{
+    color:black;
   }
+
+  span{
+    margin-right: 3px;
+  }
+
+
+
 }
 
-#register{
-  float:right;
-  margin-right: 30px;
-  margin-top: 3px;
 
-  p{
-    margin-top: 5px;
-    color:white;
-  }
-color:white;
-  button{
-    color:darkgray;
-  }
-}
 
 #fbLogin{
 
