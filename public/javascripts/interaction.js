@@ -1,6 +1,7 @@
 /**
  * Created by Bart on 22/11/2014.
  */
+
 (function interactionInit(){
 
     var showReg = document.getElementById("showReg");
@@ -43,6 +44,8 @@
         document.getElementById('register').classList.toggle('toHideOrNotToHide');
         document.getElementById('login').classList.toggle('toHideOrNotToHide');
     });
+
+
 
 
 })();

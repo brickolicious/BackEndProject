@@ -142,4 +142,14 @@ color:white;
   #messages { list-style-type: none; margin: 0; padding: 0; }
   #messages li { padding: 5px 10px; }
   #messages li:nth-child(odd) { background: #eee; }
+  height: calc(100% - 35px);
+  overflow-y:auto
 }
+
+
+.btn0{color:white;background-color: #993399}
+.btn1{color:white;background-color: #6666FF}
+.btn2{color:white;background-color: #f0ad4e}
+.btn3{color:white;background-color: darkorange}
+.btn4{color:white;background-color: orangered}
+.btn5{color:white;background-color: #c9302c}
