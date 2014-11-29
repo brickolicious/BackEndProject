@@ -5,12 +5,13 @@
 
     var showReg = document.getElementById("showReg");
 
-    showReg.addEventListener('click',function(e){
-        e.preventDefault();
-        document.getElementById('login').classList.toggle('toHideOrNotToHide');
-        document.getElementById('register').classList.toggle('toHideOrNotToHide');
-    });
-
+    if(showReg != null) {
+        showReg.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.getElementById('login').classList.toggle('toHideOrNotToHide');
+            document.getElementById('register').classList.toggle('toHideOrNotToHide');
+        });
+    }
 /*
     var regBtn = document.getElementById('regBtn');
 

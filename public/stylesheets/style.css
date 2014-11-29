@@ -39,6 +39,8 @@ aside {
 
 #map-canvas {
   /*height: calc(100% - 1px);*/
+  border-left: 1px solid black;
+  border-right: 1px solid black;
   height: calc(100% - 35px); }
 
 #infoPanel {
@@ -84,10 +86,27 @@ aside {
   #login span, #register span, #forgot span {
     margin-right: 3px; }
 
-#fbLogin {
-  padding: 5px;
-  color: #FFF;
-  background-color: #3B5998;
-  margin: 10px; }
+#chat form {
+  padding: 3px;
+  position: fixed;
+  bottom: 15px; }
+#chat form input {
+  border: 1px solid black;
+  padding: 2px;
+  width: 90%;
+  margin-right: .5%; }
+#chat form button {
+  border: none;
+  padding: 2px;
+  width: 90%;
+  margin-right: 0.5%; }
+#chat #messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+#chat #messages li {
+  padding: 5px 10px; }
+#chat #messages li:nth-child(odd) {
+  background: #eee; }
 
 /*# sourceMappingURL=style.css.map */

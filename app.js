@@ -7,8 +7,6 @@ var bodyParser = require('body-parser');
 var expressSession = require('express-session');
 var app = express();
 var routes = require('./routes/index');
-/*var pointData = require('./routes/data');*/
-
 var passport = require('passport');
 var passportLocal = require('passport-local');
 
@@ -41,7 +39,6 @@ app.use(passport.session());
 
 
 app.use('/', routes);
-/*app.use('/data', pointData);*/
 
 
 
@@ -86,6 +83,9 @@ var server = app.listen(app.get('port'), function() {
     console.log('Express server listening on port ' + server.address().port + '\n');
 });
 
+var io = require('socket.io').listen(server);
+var myIO = require('./routes/chat');
+myIO.ioChat(app,io);
 
 
 

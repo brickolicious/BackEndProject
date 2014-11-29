@@ -50,7 +50,7 @@ router.get('/', function(req, res) {
 
 router.post('/login',passport.authenticate('local'),function(req,res){
 
-
+//console.log('kom hier in');
 
 res.redirect('/');
 
