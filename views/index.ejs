@@ -43,22 +43,23 @@
         </section>
 
         <section id="login">
-          <form id="loginForm" action="/login" method="post">
-          <% if(user==null){ %>
 
+          <% if(user==null){ %>
+          <form id="loginForm" action="/login" method="post">
 
           <label for="username"><span class="glyphicon glyphicon-user"></span></label><input type="text" required="required" name="username" id="username" placeholder="username"/>
           <label for="password"><span class="glyphicon glyphicon-lock"></span></label><input type="password" required="required" name="password" id="password" placeholder="password"/>
           <input type="submit" value="login"/>
           <button  id="showReg">register</button>
           <button  id="showPass">forgot password</button>
+          </form>
           <% }else{ %>
 
           <p>Hello, <%= user.username %>! </p>
 
           <% } %>
 
-            </form>
+
             <!--  <a href="/auth/facebook" id="fbLogin"><span class="glyphicon glyphicon-user"></span>Login</a>-->
         </section>
       </nav>
@@ -82,7 +83,7 @@
       <% if(user != null){ %>
       <section id="chat" class="col-md-2">
         <ul id="messages">
-          <li>Welcome</li>
+          <li>Welcome  <span id="userName"><%= user.username %></span></li>
         </ul>
         <form id="chatForm" action="">
           <input id="sendMessage" autocomplete="off" />
@@ -168,7 +169,7 @@
     var socket = io();
     $('#chatForm').on('submit',function(e){
 
-      socket.emit('chat message', $('#sendMessage').val());
+      socket.emit('chat message', $('#userName').html()+": "+$('#sendMessage').val());
       $('#sendMessage').val('');
 
 

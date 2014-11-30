@@ -14,16 +14,15 @@ router.get('/',function(req, res) {
     });
 
 
-
-
 //zou hier moeten auth en een session aanmaken en dan doorverwijzen naar home die dan wel een user object zou moeten hebben
 router.post('/login',passport.authenticate('local'),function(req,res){
 
-console.log("Inside login post:"+req.body.username+" "+req.body.password);
+//console.log(req.user);
 
-res.redirect('/');
+res.render('index',{user:req.user});
 
 });
+
 
 router.post('/register',function(req,res){
 
