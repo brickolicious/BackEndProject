@@ -2,40 +2,8 @@ var express = require('express');
 var router = express.Router();
 var dataAccess = require("../myModules/dataAccessor.js");
 
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var expressSession = require('express-session');
 var passport = require('passport');
-var passportLocal = require('passport-local');
-
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({ extended: false }));
-router.use(cookieParser());
-router.use(passport.initialize());
-router.use(passport.session());
-
-passport.use(new passportLocal.Strategy(function(username,password,done){
-
-  //hier aanpassen en checkin in mongo gebruik makevan hashes met de crypto module
-  if(username === username){
-    done(null,{id:username,name:username});
-  }else{
-    done(null,null);
-  }
-  /*
-  done(new Error('auth error!'));*/
-}));
-
-passport.serializeUser(function(user, done){
-  done(null, user.id);
-});
-
-passport.deserializeUser(function(id,done){
-  //query the db or cache here
-  done(null, {id:id,name:id});
-});
-
-
+var Account = require('../myModules/account');
 
 
 /* GET home page. */
@@ -50,17 +18,24 @@ router.get('/', function(req, res) {
 
 router.post('/login',passport.authenticate('local'),function(req,res){
 
-//console.log('kom hier in');
+console.log("Inside login post:"+req.body.username+" "+req.body.password);
+//hier moet terug het user object komen en session gezet worden
 
 res.redirect('/');
 
 });
 
-router.post('/register',passport.authenticate('local'),function(req,res){
+router.post('/register',function(req,res){
 
-  dataAccess.registerUser(req.body);
+  Account.register(new Account({ username : req.body.username, email : req.body.email }), req.body.password, function(err, account) {
+    if (err) {
+      return res.render("register", {info: "Sorry. That username already exists. Try again."});
+    }
 
-  res.redirect('/');
+    passport.authenticate('local')(req, res, function () {
+      res.redirect('/');
+    });
+  });
 
 });
 
