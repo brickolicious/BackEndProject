@@ -81,7 +81,7 @@ aside {
   color: white; }
   #login p, #register p, #forgot p {
     margin-top: 5px; }
-  #login button, #login input[type=submit], #login input[type=text], #login input[type=email], #register button, #register input[type=submit], #register input[type=text], #register input[type=email], #forgot button, #forgot input[type=submit], #forgot input[type=text], #forgot input[type=email] {
+  #login button, #login input[type=submit], #login input[type=text], #login input[type=password], #login input[type=email], #register button, #register input[type=submit], #register input[type=text], #register input[type=password], #register input[type=email], #forgot button, #forgot input[type=submit], #forgot input[type=text], #forgot input[type=password], #forgot input[type=email] {
     color: black; }
   #login span, #register span, #forgot span {
     margin-right: 3px; }

@@ -6,20 +6,14 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressSession = require('express-session');
 
-
 var http = require('http');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-
-
 var app = express();
 var routes = require('./routes/index');
-/*var passport = require('passport');
-var passportLocal = require('passport-local');
-*/
-// view engine setup
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -29,33 +23,12 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(cookieParser());
+app.use(cookieParser('suchSecret'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-//de express session middle ware heeft een sectret nodig zodat het de cookies met het session id kan beveiligen
-//nu wordt er gezegt van je krijgt de session secret vie console toegestuurd indien niet dan neem je mylittlesecret
-/*app.use(expressSession({secret: process.env.SESSION_SECRET || 'mylittlesecret',
-    resave:false,
-    saveUninitialized:false
-}));*/
-
-
-//passport middleware for local auth
-//passport als laatste aanspreken
-/*app.use(passport.initialize());
-app.use(passport.session());
-
-*/
-//app.use(express.logger());
-//app.use(express.bodyParser());
-//app.use(express.methodOverride());
-//app.use(express.cookieParser('your secret here'));
-//app.use(express.session());
 app.use(passport.initialize());
 app.use(passport.session());
-//app.use(app.router);
-//app.use(express.static(path.join(__dirname, 'public')));
-// passport config
+
 var Account = require('./myModules/account');
 passport.use(new LocalStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());

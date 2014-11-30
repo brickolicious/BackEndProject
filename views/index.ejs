@@ -44,7 +44,7 @@
 
         <section id="login">
           <form id="loginForm" action="/login" method="post">
-          <% if(!isAuthenticated){ %>
+          <% if(user==null){ %>
 
 
           <label for="username"><span class="glyphicon glyphicon-user"></span></label><input type="text" required="required" name="username" id="username" placeholder="username"/>
@@ -54,7 +54,7 @@
           <button  id="showPass">forgot password</button>
           <% }else{ %>
 
-          <p>Hello, <%= user.name %>! </p>
+          <p>Hello, <%= user.username %>! </p>
 
           <% } %>
 
@@ -79,7 +79,7 @@
         <label for="changetype-geocode">Geocodes</label>
       </div>
 
-      <% if(isAuthenticated){ %>
+      <% if(user != null){ %>
       <section id="chat" class="col-md-2">
         <ul id="messages">
           <li>Welcome</li>
@@ -93,7 +93,7 @@
       <% } %>
 
 
-      <% if(isAuthenticated){ %>
+      <% if(user != null){ %>
       <section id="map-canvas" class="col-md-7">
 
         <!--Body content-->
@@ -124,7 +124,7 @@
             <h2>Closest address:</h2>
             <p id="address"></p>
           </section>
-          <% if(isAuthenticated){ %>
+          <% if(user != null){ %>
 
           <ul>
             <li><button type="button" value="1" class="btn btn1">Pick pocket</button></li>

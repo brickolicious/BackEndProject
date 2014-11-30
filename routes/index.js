@@ -7,19 +7,19 @@ var Account = require('../myModules/account');
 
 
 /* GET home page. */
-router.get('/', function(req, res) {
-  res.render('index', {
+router.get('/',function(req, res) {
 
-    isAuthenticated:req.isAuthenticated(),
-    user:req.user
+      res.render('index',{user:req.user});
 
-  });
-});
+    });
 
+
+
+
+//zou hier moeten auth en een session aanmaken en dan doorverwijzen naar home die dan wel een user object zou moeten hebben
 router.post('/login',passport.authenticate('local'),function(req,res){
 
 console.log("Inside login post:"+req.body.username+" "+req.body.password);
-//hier moet terug het user object komen en session gezet worden
 
 res.redirect('/');
 
