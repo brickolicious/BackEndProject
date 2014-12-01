@@ -22,14 +22,14 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
+//app.use(expressSession({secret:'muchShhh'}));
 app.use(cookieParser('suchSecret'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-var Account = require('./myModules/account');
+var Account = require('./myModules/data/account');
 passport.use(new LocalStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());

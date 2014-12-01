@@ -1,26 +1,18 @@
 var express = require('express');
 var router = express.Router();
 var dataAccess = require("../myModules/dataAccessor.js");
-
 var passport = require('passport');
-var Account = require('../myModules/account');
-
+var Account = require('../myModules/data/account');
 
 /* GET home page. */
 router.get('/',function(req, res) {
 
       res.render('index',{user:req.user});
-
     });
 
-
-//zou hier moeten auth en een session aanmaken en dan doorverwijzen naar home die dan wel een user object zou moeten hebben
 router.post('/login',passport.authenticate('local'),function(req,res){
 
-//console.log(req.user);
-
 res.render('index',{user:req.user});
-
 });
 
 
@@ -46,21 +38,12 @@ router.post('/forgot',function(req,res){
 
 });
 
+router.post('/setPoint',function(req, res){
 
-router.post('/setPoint'/*,passport.authenticate('local')*/,function(req, res){
-
-  if(req.isAuthenticated){
-
-    //user email of userID nog meegeven om te melding te koppelen aan account
-    //datum ook mee opslaan
-    dataAccess.addPoint(req.body,function(){
-      res.end('Point has been reported.');
-    });
-
-
-  }
-
+  dataAccess.addPoint(req,function(){
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Point added');
+  });
 });
-
 
 module.exports = router;

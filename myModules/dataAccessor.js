@@ -1,9 +1,13 @@
-var dataAccesor = function(){
+var dataAccessor = function(){
 
-    addPoint = function(json){
+    addPoint = function(req){
         //console.log(json);
+        var json = req.body;
         var pointToAdd = JSON.parse(clean(JSON.stringify(json)).slice(2,-5));
         console.log("Add point: "+pointToAdd.alertType);
+
+        //gives code 500
+        var connectPoints = require('./data/connectToPoints');
 
 
 
@@ -30,7 +34,6 @@ var dataAccesor = function(){
     return{
         "addPoint":addPoint,
         "getPointsAround":getAllPointsAroundLocation,
-        "registerUser":registerNewUser,
         "forgottenUser":sendForgottenPasswordToUser
     };
 
@@ -39,7 +42,7 @@ var dataAccesor = function(){
 }();
 
 
-module.exports = dataAccesor;
+module.exports = dataAccessor;
 
 function clean(json) {
 
