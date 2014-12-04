@@ -1,11 +1,19 @@
 var express = require('express');
 var router = express.Router();
-var dataAccess = require("../myModules/dataAccessor.js");
 var passport = require('passport');
 var Account = require('../myModules/data/account');
 
+var Point = require('../myModules/data/dataPointModel');
+//var connectDB = require("../myModules/connectPointDB");
+
+
 /* GET home page. */
 router.get('/',function(req, res) {
+      //console.log(Point.find().mongooseCollection.collections);
+  /*var alertPoints;
+  Point.find(function(err,pointz){
+    alertPoints = pointz;
+  });*/
 
       res.render('index',{user:req.user});
     });
@@ -40,10 +48,26 @@ router.post('/forgot',function(req,res){
 
 router.post('/setPoint',function(req, res){
 
-  dataAccess.addPoint(req,function(){
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Point added');
-  });
+  //console.log('Req all: '+req.body.alertType);
+  var pointToAdd = JSON.parse(clean(JSON.stringify(req.body)).slice(2,-5));
+  //console.log(JSON.stringify(pointToAdd));
+  var newPoint = new Point({ Lat:pointToAdd.latLng.k, Long:pointToAdd.latLng.B, Type:pointToAdd.alertType,EntryDate:Date.now() });
+  newPoint.save();
+
+  //connectDB.db.save({ Lat:10, Lng:15, Type:20 });
+
+  res.end("Point has been added.");
+
 });
+
+
+function clean(json) {
+
+  json = json.replace(/\\/g, '');
+
+  return json;
+
+}
+
 
 module.exports = router;

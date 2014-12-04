@@ -28,19 +28,20 @@
           <label for="username"><span class="glyphicon glyphicon-user"></span></label><input type="text" required="required" name="username" id="username" placeholder="username" pattern="{5,15}" title="5-15 characters"/>
           <label for="password"><span class="glyphicon glyphicon-lock"></span></label><input type="text" required="required" name="password" id="password" placeholder="password" pattern="{5,15}" title="5-15 characters"/>
           <label for="email"><span class="glyphicon glyphicon-envelope"></span></label><input type="email" name="email" id="email"/>
-          <input type="submit" id="regBtn" value="register"/>
-          <button  id="showRegLogin">Login</button>
+
+          <button  id="showRegLogin">register</button>
+            <input type="submit" id="regBtn" value="login"/>
           </form>
         </section>
 
-        <section id="forgot" class="toHideOrNotToHide">
+        <!--<section id="forgot" class="toHideOrNotToHide">
 
           <form action="/forgot" method="POST">
             <label for="email"><span class="glyphicon glyphicon-envelope"></span></label><input type="email" name="email" require="require" placeholder="email" id="email"/>
             <input type="submit" id="forgotBtn" value="request password"/>
             <button  id="showLogin">Login</button>
           </form>
-        </section>
+        </section>-->
 
         <section id="login">
 
@@ -51,7 +52,7 @@
           <label for="password"><span class="glyphicon glyphicon-lock"></span></label><input type="password" required="required" name="password" id="password" placeholder="password"/>
           <input type="submit" value="login"/>
           <button  id="showReg">register</button>
-          <button  id="showPass">forgot password</button>
+          <!--<button  id="showPass">forgot password</button>-->
           </form>
           <% }else{ %>
 
@@ -180,6 +181,13 @@
     socket.on('chat message', function(msg){
       $('#messages').append($('<li>').text(msg));
     });
+
+
+    socket.on('points',function(points){
+        console.log(JSON.stringify(points));
+    });
+
+    window.onload=function(){socket.emit('points');};
 
   </script>
   </body>
