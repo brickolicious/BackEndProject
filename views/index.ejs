@@ -10,7 +10,7 @@
 
   </head>
   <body>
-
+  <span id="lepop" class="nopop">Default text</span>
 
 
   <div class="container-fluid">
@@ -81,6 +81,8 @@
         <label for="changetype-geocode">Geocodes</label>
       </div>
 
+
+
       <% if(user != null){ %>
       <section id="chat" class="col-md-2">
         <ul id="messages">
@@ -91,7 +93,7 @@
           <button id="sendChat">Send</button>
         </form>
       </section>
-      <script></script>
+
       <% } %>
 
 
@@ -129,15 +131,15 @@
           <% if(user != null){ %>
 
           <ul>
-            <li><button type="button" value="1" class="btn btn1">Pick pocket</button></li>
-            <li><button type="button" value="2" class="btn btn2">Harassment</button></li>
-            <li><button type="button" value="3" class="btn btn3">Robbery</button></li>
-            <li><button type="button" value="4" class="btn btn4">Burglary</button></li>
-            <li><button type="button" value="5" class="btn btn5">Murder</button></li>
+            <li><button type="button" value="PickPocket" class="btn btn1">Pick pocket</button></li>
+            <li><button type="button" value="Harassment" class="btn btn2">Harassment</button></li>
+            <li><button type="button" value="Robbery" class="btn btn3">Robbery</button></li>
+            <li><button type="button" value="Burglary" class="btn btn4">Burglary</button></li>
+            <li><button type="button" value="Murder" class="btn btn5">Murder</button></li>
           </ul>
 
           <ul>
-            <li><button type="button" value="0" class="btn btn0">Suspicious activity</button></li>
+            <li><button type="button" value="SuspiciousActivity" class="btn btn0">Suspicious activity</button></li>
           </ul>
           <ul>
             <li><button type="button" class="btn btn-info">About alertmap</button></li>
@@ -151,24 +153,27 @@
     </article>
   </div>
 
-
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="application/javascript"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlXzNPrFk8mP1hbfi7xE-hqeYKRMeCo2g" type="text/javascript"></script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="application/javascript"></script>
+  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
   <script src="/javascripts/map.js" type="text/javascript"></script>
   <script src="/javascripts/data.js" type="text/javascript"></script>
 
 
+
+
+
   <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js' type="application/javascript"></script>
-  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+
   <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
   <script src="/javascripts/interaction.js" type="text/javascript"></script>
-
+  <script src="/javascripts/clientChat.js" type="text/javascript"></script>
   <script>
 
     //304 code cached and not rerun, chat gets posted and needs be blocked by dirty code
-    var socket = io();
-    $('#chatForm').on('submit',function(e){
+    //var socket = io();
+    /*$('#chatForm').on('submit',function(e){
 
       socket.emit('chat message', $('#userName').html()+": "+$('#sendMessage').val());
       $('#sendMessage').val('');
@@ -188,7 +193,7 @@
     });
 
     window.onload=function(){socket.emit('points');};
-
+*/
   </script>
   </body>
 </html>

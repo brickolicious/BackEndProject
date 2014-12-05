@@ -153,3 +153,25 @@ color:white;
 .btn3{color:white;background-color: darkorange}
 .btn4{color:white;background-color: orangered}
 .btn5{color:white;background-color: #c9302c}
+
+
+
+.nopop{
+  display: none;
+}
+
+.popup{
+  display: block;
+  position: fixed;
+  width: 30%;
+  top: 10%;
+  left: 35%;
+  z-index: 5;
+  padding: 10px;
+  background-color: purple;
+  text-align: center;
+  color:white;
+
+
+
+}

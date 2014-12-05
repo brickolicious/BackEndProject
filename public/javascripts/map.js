@@ -31,6 +31,13 @@ function updateMarkerAddress(str) {
 
 function initialize() {
     //console.log("In initialize maps function");
+    var socket = io();
+    socket.on('points',function(points){
+        //console.log(JSON.stringify(points));
+        makeMarkersOutOfJSON(points);
+    });
+
+
 
     var map;
     var mymarker;
@@ -47,6 +54,7 @@ function initialize() {
         maximumAge: 0
     };
 
+
     function success(pos) {
 
         var crd = pos.coords;
@@ -60,6 +68,10 @@ function initialize() {
         var latLng = new google.maps.LatLng(crd.latitude, crd.longitude);
         dragAndDrop(map,latLng);
         searchAutoComplete();
+
+        //emit and get all the reported points
+        //here because map context is known here
+        socket.emit('points');
     };
 
     function error(err) {
@@ -85,6 +97,7 @@ function initialize() {
             title: 'My location',
             map: map,
             draggable: true,
+            zIndex: 5000,
             icon: pinSymbol("#5bc0de")
         });
 
@@ -206,7 +219,76 @@ function initialize() {
     }
 
 
+
+
+
+
+    function makeMarkersOutOfJSON(markerJSON){
+        //markerJSON = JSON.parse(markerJSON);
+        var pincolor = "#F0F";
+        var markerCollection = [];
+        for(var i = 0;i< markerJSON.length;i++){
+
+            switch(markerJSON[i].Type) {
+                case "PickPocket":
+                    pincolor = "#6666FF";
+                    break;
+                case "Harassment":
+                    pincolor = "#f0ad4e";
+                    break;
+                case "Robbery":
+                    pincolor = "#ee7600";
+                    break;
+                case "Burglary":
+                    pincolor = "#ff4500";
+                    break;
+                case "Murder":
+                    pincolor = "#c9302c";
+                    break;
+                case "SuspiciousActivity":
+                    pincolor = "#993399";
+                    break;
+                default:
+                    pincolor = "#FFF";
+            }
+
+
+
+            var marker = new google.maps.Marker({
+                position: {lat: parseFloat(markerJSON[i].Lat), lng: parseFloat(markerJSON[i].Long)},
+                title: markerJSON[i].Type,
+                draggable: false,
+                icon:{
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale:12,
+                    strokeWeight:1,
+                    strokeColor:pincolor,
+                    fillColor:pincolor,
+                    fillOpacity:0.6},
+                map:map
+
+
+            });
+            //console.log(marker);
+            marker.setMap(map);
+
+            //markerCollection.push(marker);
+
+        }
+
+    }
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 google.maps.event.addDomListener(window, 'load', initialize);

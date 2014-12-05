@@ -4,7 +4,7 @@ initData();
 function initData() {
 
     coupleListenersToAlertButtons();
-    getAllPointsForLocation();
+    //makeMarkersOutOfJSON();
 
 };
 
@@ -33,7 +33,16 @@ function coupleListenersToAlertButtons(){
                 data: JSON.stringify(alertObj)
             }).done(function (data) {
                 //console.log("ajax callback response:" + data);
-                alert(data);
+                var lepop = document.getElementById("lepop");
+                lepop.innerHTML = data;
+                lepop.classList.toggle("nopop");
+                lepop.classList.toggle("popup");
+                setTimeout(function(){
+                    lepop.classList.toggle("nopop");
+                    lepop.classList.toggle("popup");
+                },1500);
+                //var myLittleSocket = io();
+                //myLittleSocket.emit("points",function(data){makeMarkersOutOfJSON(data);});
 
             });
 
@@ -41,9 +50,4 @@ function coupleListenersToAlertButtons(){
         });
 
     }
-}
-
-function getAllPointsForLocation(){
-    //haal punten op voor currentLatLng indien deze verandered
-    //maar hoe aanroepen hier wnr map file eerst ingelezen wordt
 }
