@@ -5,7 +5,8 @@ body, html {
   top: 0px;
   left: 0px;
   height: 100%;
-  width: 100%; }
+  width: 100%;
+  overflow: hidden; }
 
 aside {
   background-color: snow;
@@ -41,7 +42,9 @@ aside {
   /*height: calc(100% - 1px);*/
   border-left: 1px solid black;
   border-right: 1px solid black;
-  height: calc(100% - 35px); }
+  height: calc(100vh - 35px);
+  position: fixed;
+  bottom: 0px; }
 
 #infoPanel {
   text-align: center; }
@@ -87,26 +90,35 @@ aside {
     margin-right: 3px; }
 
 #chat {
-  height: calc(100% - 35px);
-  overflow-y: auto; }
+  padding: 0px;
+  height: 100vh;
+  overflow-y: scroll; }
   #chat form {
     padding: 3px;
     position: fixed;
-    bottom: 15px; }
+    bottom: 0px;
+    background-color: #303030;
+    padding: 10px;
+    width: inherit;
+    height: 80px; }
   #chat form input {
     border: 1px solid black;
     padding: 2px;
-    width: 90%;
-    margin-right: .5%; }
+    width: 100%;
+    margin-bottom: 5px; }
   #chat form button {
     border: none;
     padding: 2px;
-    width: 90%;
-    margin-right: 0.5%; }
+    width: 100%; }
   #chat #messages {
     list-style-type: none;
     margin: 0;
-    padding: 0; }
+    padding: 0;
+    position: fixed;
+    bottom: 80px;
+    top: 35px;
+    width: inherit;
+    overflow-y: auto; }
   #chat #messages li {
     padding: 5px 10px; }
   #chat #messages li:nth-child(odd) {
