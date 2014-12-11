@@ -81,5 +81,3 @@ var myIO = require('./routes/chat');
 myIO.ioChat(app,io);
 
 module.exports = app;
-
-

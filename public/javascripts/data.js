@@ -19,7 +19,7 @@ function coupleListenersToAlertButtons(){
             //console.log("value: "+this.value);
             var alertObj = {
                 "alertType": this.value,
-                "latLng": currentLatLng
+                "latLng": {lat:currentLatLng.lat(),lng:currentLatLng.lng()}
             };
 
 
@@ -43,7 +43,7 @@ function coupleListenersToAlertButtons(){
                 },1500);
                 var myLittleSocket = io();
                 myLittleSocket.emit("points",function(data){makeMarkersOutOfJSON(data);});
-                //socket.emit('points');
+                socket.emit('points');
             });
 
 

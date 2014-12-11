@@ -33,7 +33,7 @@ function initialize() {
     //console.log("In initialize maps function");
     var socket = io();
     socket.on('points',function(points){
-        //console.log(JSON.stringify(points));
+        console.log("such points: "+JSON.stringify(points));
         makeMarkersOutOfJSON(points);
     });
 

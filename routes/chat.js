@@ -16,7 +16,7 @@ var chatModule = function(){
 
             socket.on('points', function(socket){
 
-                    console.log("Points emit received on server.");
+                    //console.log("Points emit received on server.");
 
                     Point.find(function(err,pointz){
                         io.emit('points',pointz);

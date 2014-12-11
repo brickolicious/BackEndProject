@@ -9,11 +9,6 @@ var Point = require('../myModules/data/dataPointModel');
 
 /* GET home page. */
 router.get('/',function(req, res) {
-      //console.log(Point.find().mongooseCollection.collections);
-  /*var alertPoints;
-  Point.find(function(err,pointz){
-    alertPoints = pointz;
-  });*/
 
       res.render('index',{user:req.user});
     });
@@ -48,14 +43,9 @@ router.post('/forgot',function(req,res){
 
 router.post('/setPoint',function(req, res){
 
-  //console.log('Req all: '+req.body.alertType);
   var pointToAdd = JSON.parse(clean(JSON.stringify(req.body)).slice(2,-5));
-  //console.log(JSON.stringify(pointToAdd));
-  var newPoint = new Point({ Lat:pointToAdd.latLng.k, Long:pointToAdd.latLng.B, Type:pointToAdd.alertType,EntryDate:Date.now() });
+  var newPoint = new Point({ Lat:pointToAdd.latLng.lat, Long:pointToAdd.latLng.lng, Type:pointToAdd.alertType,EntryDate:Date.now() });
   newPoint.save();
-
-  //connectDB.db.save({ Lat:10, Lng:15, Type:20 });
-
   res.end("Point has been added.");
 
 });
