@@ -2,20 +2,29 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var Account = require('../myModules/data/account');
-
 var Point = require('../myModules/data/dataPointModel');
-//var connectDB = require("../myModules/connectPointDB");
-
+var serverIP;
+var ifaces=require('os').networkInterfaces();
+for (var dev in ifaces) {
+  var alias=0;
+  ifaces[dev].forEach(function(details){
+    if (details.family=='IPv4' && details.address != "127.0.0.1") {
+      serverIP = details.address;
+    }
+  });
+}
 
 /* GET home page. */
 router.get('/',function(req, res) {
 
-      res.render('index',{user:req.user});
-    });
+  res.render('index', {user: req.user,srvIP:serverIP});
+
+});
 
 router.post('/login',passport.authenticate('local'),function(req,res){
 
-res.render('index',{user:req.user});
+res.render('index',{user:req.user,srvIP:serverIP});
+
 });
 
 

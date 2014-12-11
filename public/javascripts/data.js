@@ -22,11 +22,13 @@ function coupleListenersToAlertButtons(){
                 "latLng": {lat:currentLatLng.lat(),lng:currentLatLng.lng()}
             };
 
-
+            //var serverIP = "http://"+nsGeo.serverIP+":8080/setPoint";
+            var serverIP = "http://"+location.host+"/setPoint";
+            //alert(serverIP);
             //set point - send point data to server
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8080/setPoint",
+                url: serverIP,
                 /*crossDomain:true,
                  dataType: "json",
                  contentType: "application/json; charset=UTF-8",*/

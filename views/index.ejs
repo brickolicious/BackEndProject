@@ -5,9 +5,9 @@
     <link href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css' rel="stylesheet" type="text/css"/>
 
     <link rel='stylesheet' href='/stylesheets/style.css' />
-
-
-
+    <script>
+      var nsGeo = {};
+      nsGeo.serverIP = "<%=srvIP %>";</script>
   </head>
   <body>
   <span id="lepop" class="nopop">Default text</span>
@@ -56,7 +56,7 @@
           </form>
           <% }else{ %>
 
-          <p>Hello, <%= user.username %>! </p>
+          <p>Hello, <%=user.username%>! </p>
 
           <% } %>
 
