@@ -19,6 +19,7 @@ function updateMarkerStatus(str) {
 
 function updateMarkerPosition(latLng) {
     currentLatLng = latLng;
+    nsGeo.location = latLng;
     document.getElementById('info').innerHTML = [
         latLng.lat(),
         latLng.lng()
@@ -33,7 +34,6 @@ function initialize() {
     //console.log("In initialize maps function");
     var socket = io();
     socket.on('points',function(points){
-        console.log("such points: "+JSON.stringify(points));
         makeMarkersOutOfJSON(points);
     });
 
@@ -66,6 +66,7 @@ function initialize() {
 
         //set marker and update info where marker is set
         var latLng = new google.maps.LatLng(crd.latitude, crd.longitude);
+        //nsGeo.location = latLng;
         dragAndDrop(map,latLng);
         searchAutoComplete();
 
@@ -90,7 +91,7 @@ function initialize() {
     //also calls function to update frontend info
     function dragAndDrop(map,latLng){
 
-
+            nsGeo.location = latLng;
 
         mymarker = new google.maps.Marker({
             position: latLng,

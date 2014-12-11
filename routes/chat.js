@@ -10,13 +10,12 @@ var chatModule = function(){
 
     var socketInit = function(app,io){
         io.on('connection', function(socket){
-            socket.on('chat message', function(msg){
-                io.emit('chat message', msg);
+
+            socket.on('chat message', function(chatObj){
+                io.emit('chat message', chatObj);
             });
 
             socket.on('points', function(socket){
-
-                    //console.log("Points emit received on server.");
 
                     Point.find(function(err,pointz){
                         io.emit('points',pointz);
