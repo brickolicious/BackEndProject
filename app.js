@@ -37,16 +37,7 @@ passport.deserializeUser(Account.deserializeUser());
 // mongoose
 mongoose.connect('mongodb://localhost/alertmap');
 
-
-
-
-
-
 app.use('/', routes);
-
-
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -79,8 +70,6 @@ app.use(function(err, req, res, next) {
     });
 });
 
-
-
 app.set('port', process.env.PORT || 8080);
 
 var server = app.listen(app.get('port'), function() {
@@ -90,9 +79,6 @@ var server = app.listen(app.get('port'), function() {
 var io = require('socket.io').listen(server);
 var myIO = require('./routes/chat');
 myIO.ioChat(app,io);
-
-
-
 
 module.exports = app;
 

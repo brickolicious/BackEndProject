@@ -41,9 +41,9 @@ function coupleListenersToAlertButtons(){
                     lepop.classList.toggle("nopop");
                     lepop.classList.toggle("popup");
                 },1500);
-                //var myLittleSocket = io();
-                //myLittleSocket.emit("points",function(data){makeMarkersOutOfJSON(data);});
-
+                var myLittleSocket = io();
+                myLittleSocket.emit("points",function(data){makeMarkersOutOfJSON(data);});
+                //socket.emit('points');
             });
 
 

@@ -4,11 +4,6 @@
 
 var mongoose = require('mongoose');
 var pointSchema = require('./dataPointScheme');
-
-
-
-
 var Point = mongoose.model('Point',pointSchema,"Points");
-
 
 module.exports = Point;
