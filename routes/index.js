@@ -23,7 +23,14 @@ router.get('/',function(req, res) {
 
 router.post('/login',passport.authenticate('local'),function(req,res){
 
-res.render('index',{user:req.user,srvIP:serverIP});
+  if(req.isAuthenticated()){
+    res.render('index',{user:req.user});
+  }else{
+    res.render('index',{user:req.user/*,srvIP:serverIP*/});
+
+  }
+
+
 
 });
 

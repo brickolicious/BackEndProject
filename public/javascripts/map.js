@@ -1,5 +1,6 @@
 var geocoder = new google.maps.Geocoder();
 var currentLatLng;
+var map;
 
 function geocodePosition(pos) {
     geocoder.geocode({
@@ -34,12 +35,10 @@ function initialize() {
     //console.log("In initialize maps function");
     var socket = io();
     socket.on('points',function(points){
+        removeAllMarkers();
         makeMarkersOutOfJSON(points);
     });
 
-
-
-    var map;
     var mymarker;
 
     var mapOptions = {
@@ -220,15 +219,29 @@ function initialize() {
     }
 
 
+    // indien dit ooit door vele gebruikers benut zou worden
+    // dan moet bij het ophalen v/d markers de users location meegegven
+    //worden en enkel punten er rond opgehaald worden --> veeeeel performanter -->meer tijd
+    function removeAllMarkers(){
 
+        if(nsGeo.markerCollection){
+        var length = nsGeo.markerCollection.length,i=0;
+        for(i;i<length;i++){
 
+            nsGeo.markerCollection[i].setMap(null);
+        }
+        }
+
+    }
 
 
     function makeMarkersOutOfJSON(markerJSON){
-        //markerJSON = JSON.parse(markerJSON);
-        var pincolor = "#F0F";
-        var markerCollection = [];
-        for(var i = 0;i< markerJSON.length;i++){
+
+        //removeAllMarkers();
+
+        var pincolor = "#F0F",length =markerJSON.length;
+        nsGeo.markerCollection = [];
+        for(var i = 0;i< length;i++){
 
             switch(markerJSON[i].Type) {
                 case "PickPocket":
@@ -265,17 +278,22 @@ function initialize() {
                     strokeWeight:1,
                     strokeColor:pincolor,
                     fillColor:pincolor,
-                    fillOpacity:0.6},
+                    fillOpacity:0.3},
                 map:map
 
 
             });
             //console.log(marker);
-            marker.setMap(map);
+            nsGeo.markerCollection.push(marker);
 
-            //markerCollection.push(marker);
-
+            //marker.setMap(map);
         }
+
+        /*for(var i =0;i<markerCollection.length;i++){
+            console.log(nsGeo.markerCollection[i]);
+            nsGeo.markerCollection[i].setMap(map);
+
+        }*/
 
     }
 
