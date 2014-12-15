@@ -30,8 +30,6 @@ router.post('/login',passport.authenticate('local'),function(req,res){
 
   }
 
-
-
 });
 
 
@@ -46,14 +44,6 @@ router.post('/register',function(req,res){
       res.redirect('/');
     });
   });
-
-});
-
-router.post('/forgot',function(req,res){
-
-  dataAccess.forgottenUser(req.body);
-
-  res.redirect('/');
 
 });
 

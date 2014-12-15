@@ -13,7 +13,7 @@ function initData() {
 function coupleListenersToAlertButtons(){
     var buttons = document.getElementById("sideMenu").getElementsByTagName("button");
 
-    for (var i = 0; i < buttons.length - 1; i++) {
+    for (var i = 0; i < buttons.length; i++) {
 
         buttons[i].addEventListener("click", function (e) {
             //console.log("value: "+this.value);
