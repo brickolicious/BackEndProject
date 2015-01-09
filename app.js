@@ -35,7 +35,7 @@ passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
 // mongoose
-mongoose.connect('mongodb://localhost/alertmap');
+mongoose.connect(process.env.MONGO_URL||'mongodb://localhost/alertmap');
 
 app.use('/', routes);
 
